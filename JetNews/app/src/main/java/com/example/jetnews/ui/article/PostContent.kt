@@ -55,6 +55,7 @@ import com.example.jetnews.model.Paragraph
 import com.example.jetnews.model.ParagraphType
 import com.example.jetnews.model.Post
 import com.example.jetnews.ui.VectorImage
+import com.example.jetnews.ui.image
 
 private val defaultSpacerSize = 16.dp
 private val codeBlockBackground = Color(0xfff1f1f1.toInt())
@@ -87,7 +88,8 @@ fun PostContent(post: Post) {
 
 @Composable
 private fun PostHeaderImage(post: Post) {
-    post.image?.let { image ->
+    val image = +image(post.imageId)
+    if (image != null) {
         Container(expanded = true, height = 180.dp) {
             Clip(shape = RoundedCornerShape(4.dp)) {
                 DrawImage(image)

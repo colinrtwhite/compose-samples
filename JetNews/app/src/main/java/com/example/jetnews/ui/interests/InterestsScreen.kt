@@ -23,6 +23,7 @@ import androidx.ui.core.Clip
 import androidx.ui.core.Opacity
 import androidx.ui.core.Text
 import androidx.ui.core.dp
+import androidx.ui.foundation.ColoredRect
 import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
@@ -38,14 +39,15 @@ import androidx.ui.material.Divider
 import androidx.ui.material.Tab
 import androidx.ui.material.TabRow
 import androidx.ui.material.TopAppBar
+import androidx.ui.material.themeColor
 import androidx.ui.material.themeTextStyle
-import androidx.ui.res.imageResource
 import com.example.jetnews.R
 import com.example.jetnews.data.people
 import com.example.jetnews.data.publications
 import com.example.jetnews.data.topics
 import com.example.jetnews.ui.JetnewsStatus
 import com.example.jetnews.ui.VectorImageButton
+import com.example.jetnews.ui.image
 
 private enum class Sections(val title: String) {
     Topics("Topics"),
@@ -156,7 +158,7 @@ private fun TabWithSections(
 
 @Composable
 private fun TopicItem(topicKey: String, itemTitle: String) {
-    val image = +imageResource(R.drawable.placeholder_1_1)
+    val image = +image(R.drawable.placeholder_1_1)
     Padding(left = 16.dp, right = 16.dp) {
         FlexRow(
             crossAxisAlignment = CrossAxisAlignment.Center
@@ -164,7 +166,11 @@ private fun TopicItem(topicKey: String, itemTitle: String) {
             inflexible {
                 Container(width = 56.dp, height = 56.dp) {
                     Clip(RoundedCornerShape(4.dp)) {
-                        DrawImage(image)
+                        if (image != null) {
+                            DrawImage(image)
+                        } else {
+                            ColoredRect(color = +themeColor { primary })
+                        }
                     }
                 }
             }

@@ -17,10 +17,8 @@
 package com.example.jetnews.ui.home
 
 import androidx.compose.Composable
-import androidx.compose.ambient
 import androidx.compose.unaryPlus
 import androidx.ui.core.Clip
-import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.foundation.DrawImage
@@ -37,10 +35,10 @@ import androidx.ui.material.surface.Surface
 import androidx.ui.material.themeTextStyle
 import androidx.ui.material.withOpacity
 import androidx.ui.tooling.preview.Preview
-import com.example.jetnews.data.getPostsWithImagesLoaded
 import com.example.jetnews.data.posts
 import com.example.jetnews.model.Post
 import com.example.jetnews.ui.darkThemeColors
+import com.example.jetnews.ui.image
 import com.example.jetnews.ui.lightThemeColors
 import com.example.jetnews.ui.themeTypography
 
@@ -49,7 +47,8 @@ fun PostCardTop(post: Post) {
     // TUTORIAL CONTENT STARTS HERE
     Padding(16.dp) {
         Column(crossAxisSize = LayoutSize.Expand) {
-            post.image?.let { image ->
+            val image = +image(post.imageId)
+            if (image != null) {
                 Container(expanded = true, height = 180.dp) {
                     Clip(shape = RoundedCornerShape(4.dp)) {
                         DrawImage(image)
@@ -99,8 +98,7 @@ fun TutorialPreviewTemplate(
     colors: MaterialColors = lightThemeColors,
     typography: MaterialTypography = themeTypography
 ) {
-    val context = +ambient(ContextAmbient)
-    val previewPosts = getPostsWithImagesLoaded(posts.subList(1, 2), context.resources)
+    val previewPosts = posts.subList(1, 2)
     val post = previewPosts[0]
     MaterialTheme(colors = colors, typography = typography) {
         Surface {

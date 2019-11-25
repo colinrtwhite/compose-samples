@@ -37,6 +37,7 @@ import com.example.jetnews.model.Post
 import com.example.jetnews.ui.JetnewsStatus
 import com.example.jetnews.ui.Screen
 import com.example.jetnews.ui.VectorImage
+import com.example.jetnews.ui.image
 import com.example.jetnews.ui.navigateTo
 
 @Composable
@@ -57,7 +58,7 @@ fun AuthorAndReadTime(post: Post) {
 
 @Composable
 fun PostImage(post: Post) {
-    val image = post.imageThumb ?: +imageResource(R.drawable.placeholder_1_1)
+    val image = +image(post.imageThumbId) ?: +imageResource(R.drawable.placeholder_1_1)
 
     Container(width = 40.dp, height = 40.dp) {
         DrawImage(image)

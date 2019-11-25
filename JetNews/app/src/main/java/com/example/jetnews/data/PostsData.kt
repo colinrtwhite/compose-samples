@@ -16,8 +16,6 @@
 
 package com.example.jetnews.data
 
-import android.content.res.Resources
-import androidx.ui.graphics.imageFromResource
 import com.example.jetnews.R
 import com.example.jetnews.model.Markup
 import com.example.jetnews.model.MarkupType
@@ -1015,12 +1013,3 @@ var posts = listOf(
     post4.copy(id = "post4"),
     post5.copy(id = "post5")
 )
-
-fun getPostsWithImagesLoaded(posts: List<Post>, resources: Resources): List<Post> {
-    return posts.map {
-        it.copy(
-            image = imageFromResource(resources, it.imageId),
-            imageThumb = imageFromResource(resources, it.imageThumbId)
-        )
-    }
-}

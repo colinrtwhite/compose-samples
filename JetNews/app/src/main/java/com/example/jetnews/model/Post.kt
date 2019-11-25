@@ -16,8 +16,6 @@
 
 package com.example.jetnews.model
 
-import androidx.ui.graphics.Image
-
 data class Post(
     val id: String,
     val title: String,
@@ -27,9 +25,7 @@ data class Post(
     val metadata: Metadata,
     val paragraphs: List<Paragraph> = emptyList(),
     val imageId: Int,
-    val imageThumbId: Int,
-    val image: Image? = null,
-    val imageThumb: Image? = null
+    val imageThumbId: Int
 )
 
 data class Metadata(

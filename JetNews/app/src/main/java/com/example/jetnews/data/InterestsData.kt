@@ -22,18 +22,17 @@ val topics = mapOf(
     "Technology" to listOf("Pixel", "Google")
 )
 
-val people =
-    listOf(
-        "Kobalt Toral",
-        "K'Kola Uvarek",
-        "Kris Vriloc",
-        "Grala Valdyr",
-        "Kruel Valaxar",
-        "L'Elij Venonn",
-        "Kraag Solazarn",
-        "Tava Targesh",
-        "Kemarrin Muuda"
-    )
+val people = listOf(
+    "Kobalt Toral",
+    "K'Kola Uvarek",
+    "Kris Vriloc",
+    "Grala Valdyr",
+    "Kruel Valaxar",
+    "L'Elij Venonn",
+    "Kraag Solazarn",
+    "Tava Targesh",
+    "Kemarrin Muuda"
+)
 
 val publications = listOf(
     "Kotlin Vibe",

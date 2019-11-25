@@ -36,6 +36,7 @@ import androidx.ui.text.style.TextOverflow
 import com.example.jetnews.R
 import com.example.jetnews.model.Post
 import com.example.jetnews.ui.Screen
+import com.example.jetnews.ui.image
 import com.example.jetnews.ui.navigateTo
 
 @Composable
@@ -50,7 +51,7 @@ fun PostCardPopular(post: Post) {
                         mainAxisSize = LayoutSize.Expand,
                         crossAxisSize = LayoutSize.Expand
                     ) {
-                        val image = post.image ?: +imageResource(R.drawable.placeholder_4_3)
+                        val image = +image(post.imageId) ?: +imageResource(R.drawable.placeholder_4_3)
                         Container(height = 100.dp, expanded = true) {
                             DrawImage(image)
                         }
