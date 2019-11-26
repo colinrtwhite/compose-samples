@@ -1,44 +1,60 @@
 package com.example.jetnews.ui
 
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import androidx.annotation.CheckResult
 import androidx.annotation.RequiresApi
 import androidx.compose.effectOf
+import androidx.compose.memo
 import androidx.compose.onCommit
 import androidx.compose.state
+import androidx.core.graphics.drawable.toBitmap
 import androidx.ui.graphics.Image
 import androidx.ui.graphics.ImageConfig
 import androidx.ui.graphics.NativeImage
 import androidx.ui.graphics.colorspace.ColorSpace
 import androidx.ui.graphics.colorspace.ColorSpaces
 import coil.Coil
-import coil.api.getAny
+import coil.api.newGetBuilder
+import coil.request.GetRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
- * Asynchronously load an [Image].
- *
- * @param data The data to load. Supports any of the following: HttpUrl, Uri, File, Resource.
+ * A simple [image] effect, which loads [data] with the default options.
  */
 @CheckResult(suggest = "+")
 fun image(data: Any) = effectOf<Image?> {
-    val image = +state<Image?> { null }
-    +onCommit(data) {
-        val scope = CoroutineScope(Job() + Dispatchers.Main.immediate).launch {
-            val drawable = Coil.getAny(data)
-            if (drawable is BitmapDrawable) {
-                image.value = AndroidImage(drawable.bitmap)
-            } else {
-                error("Non-Bitmap Drawables are not currently supported.")
-            }
-        }
-        onDispose { scope.cancel() }
+    // Positionally memoize the request creation so
+    // it will only be recreated if data changes.
+    val request = +memo {
+        Coil.loader().newGetBuilder().data(data).build()
     }
+    +image(request)
+}
+
+/**
+ * A configurable [image] effect, which accepts a [request] value object.
+ */
+@CheckResult(suggest = "+")
+fun image(request: GetRequest) = effectOf<Image?> {
+    val image = +state<Image?> { null }
+
+    // Execute the following code whenever request changes.
+    +onCommit(request) {
+        val job = CoroutineScope(Dispatchers.Main.immediate).launch {
+            // Start loading the image and await the result.
+            val drawable = Coil.loader().get(request)
+            image.value = AndroidImage(drawable.toBitmap())
+        }
+
+        // Cancel the request if the input to onCommit changes or
+        // the Composition is removed from the composition tree.
+        onDispose { job.cancel() }
+    }
+
+    // Emit a null Image to start with.
     image.value
 }
 
