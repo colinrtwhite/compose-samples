@@ -47,7 +47,7 @@ fun PostCardTop(post: Post) {
     // TUTORIAL CONTENT STARTS HERE
     Padding(16.dp) {
         Column(crossAxisSize = LayoutSize.Expand) {
-            val image = +image(post.imageId)
+            val image = +image(post.imageUrl)
             if (image != null) {
                 Container(expanded = true, height = 180.dp) {
                     Clip(shape = RoundedCornerShape(4.dp)) {

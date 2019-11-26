@@ -88,7 +88,7 @@ fun PostContent(post: Post) {
 
 @Composable
 private fun PostHeaderImage(post: Post) {
-    val image = +image(post.imageId)
+    val image = +image(post.imageUrl)
     if (image != null) {
         Container(expanded = true, height = 180.dp) {
             Clip(shape = RoundedCornerShape(4.dp)) {

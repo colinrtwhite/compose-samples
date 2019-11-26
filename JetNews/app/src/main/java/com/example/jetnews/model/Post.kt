@@ -24,8 +24,8 @@ data class Post(
     val publication: Publication? = null,
     val metadata: Metadata,
     val paragraphs: List<Paragraph> = emptyList(),
-    val imageId: Int,
-    val imageThumbId: Int
+    val imageUrl: String,
+    val imageThumbUrl: String
 )
 
 data class Metadata(

@@ -16,7 +16,6 @@
 
 package com.example.jetnews.data
 
-import com.example.jetnews.R
 import com.example.jetnews.model.Markup
 import com.example.jetnews.model.MarkupType
 import com.example.jetnews.model.Metadata
@@ -933,8 +932,8 @@ val post1 = Post(
         readTimeMinutes = 1
     ),
     paragraphs = paragraphsPost1,
-    imageId = R.drawable.post_1,
-    imageThumbId = R.drawable.post_1_thumb
+    imageUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_1.png",
+    imageThumbUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_1_thumb.png"
 )
 
 val post2 = Post(
@@ -949,8 +948,8 @@ val post2 = Post(
         readTimeMinutes = 3
     ),
     paragraphs = paragraphsPost2,
-    imageId = R.drawable.post_2,
-    imageThumbId = R.drawable.post_2_thumb
+    imageUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_2.png",
+    imageThumbUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_2_thumb.png"
 )
 
 val post3 = Post(
@@ -965,8 +964,8 @@ val post3 = Post(
         readTimeMinutes = 1
     ),
     paragraphs = paragraphsPost3,
-    imageId = R.drawable.post_3,
-    imageThumbId = R.drawable.post_3_thumb
+    imageUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_3.png",
+    imageThumbUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_3_thumb.png"
 )
 
 val post4 = Post(
@@ -981,8 +980,8 @@ val post4 = Post(
         readTimeMinutes = 1
     ),
     paragraphs = paragraphsPost4,
-    imageId = R.drawable.post_4,
-    imageThumbId = R.drawable.post_4_thumb
+    imageUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_4.png",
+    imageThumbUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_4_thumb.png"
 )
 
 val post5 = Post(
@@ -997,8 +996,8 @@ val post5 = Post(
         readTimeMinutes = 4
     ),
     paragraphs = paragraphsPost5,
-    imageId = R.drawable.post_5,
-    imageThumbId = R.drawable.post_5_thumb
+    imageUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_5.png",
+    imageThumbUrl = "https://github.com/colinrtwhite/compose-samples/raw/98d8e548aafb80ba95bf81d3fe303a3324c3d088/JetNews/app/src/main/res/drawable-nodpi/post_5_thumb.png"
 )
 
 var posts = listOf(
