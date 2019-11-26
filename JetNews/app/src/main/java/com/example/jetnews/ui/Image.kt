@@ -41,7 +41,7 @@ fun image(data: Any) = effectOf<Image?> {
 fun image(request: GetRequest) = effectOf<Image?> {
     val image = +state<Image?> { null }
 
-    // Execute the following code whenever request changes.
+    // Execute the following code whenever the request changes.
     +onCommit(request) {
         val job = CoroutineScope(Dispatchers.Main.immediate).launch {
             // Start loading the image and await the result.
