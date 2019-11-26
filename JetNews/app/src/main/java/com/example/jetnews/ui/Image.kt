@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 fun image(data: Any) = effectOf<Image?> {
     // Positionally memoize the request creation so
     // it will only be recreated if data changes.
-    val request = +memo {
+    val request = +memo(data) {
         Coil.loader().newGetBuilder().data(data).build()
     }
     +image(request)
